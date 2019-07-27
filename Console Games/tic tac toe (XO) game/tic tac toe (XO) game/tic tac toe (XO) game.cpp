@@ -1,12 +1,12 @@
 /// Youssef Mohamed 
 /// faculty of science - Alexandria University
+
 // https://github.com/YoussefMo7amed
 // https://codeforces.com/profile/YoussefMo7amed
 // just for practcing and learning  :D 
 
 // simple console  game
 /* ( TIC TAC TOE ) Game  V1 */
-
 
 #include <iostream>
 #include <cwchar>
@@ -15,21 +15,6 @@
 using namespace std;
 
 // handling non-int
-int check()
-{
-	int a;
-	cin >> a;
-
-	while (!cin.good())
-	{
-		cout << "\n*ERROR: PLEASE ENTER CORRECT NUMBER (1 - 9)\n";
-		cin.clear();
-		cin.ignore(INT_MAX, '\n');
-		cin >> a;
-	}
-
-	return a;
-}
 // the board
 
 char board[3][3];
@@ -56,6 +41,22 @@ void initialization()
 	}
 	player = 'X';
 	counter = 0;
+}
+
+int check()
+{
+	int a;
+	cin >> a;
+
+	while (!cin.good())
+	{
+		cout << "\n*ERROR: PLEASE ENTER CORRECT NUMBER (1 - 9)\n";
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');
+		cin >> a;
+	}
+
+	return a;
 }
 
 void screen()
@@ -306,11 +307,11 @@ void finalResult()
 	string  c = "";
 
 	bool B = true;
-	if (X_PLayer == max(drawing, max(X_PLayer, O_Player)) && (X_PLayer != O_Player))
+	if (X_PLayer > O_Player)
 	{
 		c = "(X)";
 	}
-	else if (O_Player == max(drawing, max(X_PLayer, O_Player)) && (X_PLayer != O_Player))
+	else if (O_Player > O_Player)
 	{
 		c = "(O)";
 	}
@@ -327,11 +328,14 @@ void finalResult()
 	cout << "\t\t\t ---------------------" << endl;
 
 }
+
 int main()
 {
 	initialization();
 	screen();
+	
 	bool a = true;
+
 	while (a)
 	{
 		int valid;
@@ -376,7 +380,7 @@ int main()
 	}
 	
 	cout << "GOODBYE!\n";
-	
+
 	system("pause");
 	return 0;
 }
